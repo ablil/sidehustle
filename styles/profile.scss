@@ -1,0 +1,92 @@
+#profile {
+  max-width: 56rem;
+  margin: 10rem auto 0;
+}
+#profile header h2 {
+  color: white;
+  text-align: center;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    color: white;
+    padding-top: 1rem;
+  }
+}
+
+.profile-picture {
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid $text-color;
+}
+
+.profile-status {
+  padding: 0.5rem;
+  color: rgb(210, 110, 110);
+}
+
+.profile-form {
+  article label,
+  article input,
+  button {
+    display: block;
+    width: 25rem;
+    margin: auto;
+    padding: 0.5rem;
+  }
+  label {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #212529;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: 2px ridge $primary-darker;
+    }
+  }
+}
+.profile-form button,
+.profile-header button {
+  color: white;
+  font-weight: bold;
+  background-color: $primary-darker;
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: $primary;
+  }
+  &:disabled {
+    background-color: transparent;
+  }
+}
+.invalidpassword {
+  color: rgb(210, 110, 110);
+  text-align: center;
+  display: block;
+}
+.verification-email {
+  font-size: 0.765rem;
+  text-decoration: underline;
+}
+
+#profile footer {
+  text-align: center;
+  margin-top: 1rem;
+
+  span {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

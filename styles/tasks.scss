@@ -1,0 +1,55 @@
+#tasks {
+  padding: 1rem;
+}
+
+#tasks header {
+  color: $primary;
+  display: flex;
+  align-items: center;
+}
+
+p {
+  color: $secondary;
+}
+#tasks-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.task {
+  border-bottom: 1px solid $grey;
+  width: 100%;
+  display: flex;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.task:last-of-type {
+  border: none;
+}
+.task:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+.task input {
+  margin-right: 0.5rem;
+}
+#tasks-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.task-close {
+  margin-left: auto;
+  color: red;
+  visibility: hidden;
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+.task:hover .task-close {
+  visibility: visible;
+}

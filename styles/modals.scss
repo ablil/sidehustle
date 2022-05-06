@@ -1,0 +1,93 @@
+.modal {
+  .modal-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .modal-input {
+      padding-left: 1rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.5rem;
+      background-color: #212529;
+      border-radius: 0.5rem;
+      color: $text-color;
+      position: relative;
+
+      &:invalid {
+        outline: 2px ridge red;
+      }
+      &:focus {
+        outline: 2px ridge $text-color;
+      }
+      &::placeholder {
+        color: $text-color;
+      }
+    }
+  }
+
+  .modal-btn {
+    padding: 0.2rem 0.7rem;
+    margin: auto 0.5rem;
+  }
+
+  .modal-btn-ok {
+    background: $secondary;
+    color: white;
+  }
+}
+
+.ant-modal-title {
+  color: black !important;
+}
+
+.ant-modal-content,
+.ant-modal-header,
+.ant-modal-footer {
+  background-color: #343a40 !important;
+  border-radius: 0.5rem !important;
+  border: none;
+}
+
+.ant-modal-header div,
+.ant-modal-close svg {
+  color: $text-color !important;
+  text-transform: capitalize;
+}
+
+.ant-modal-close:hover {
+  background-color: #212529;
+}
+
+.ant-btn-default,
+.ant-btn-primary {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: $text-color;
+
+  &:hover {
+    background-color: transparent;
+    color: white;
+  }
+}
+.ant-btn-primary {
+  background-color: $primary-darker;
+  color: white;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  border-radius: 0.5rem;
+
+  &:disabled {
+    color: $text-color;
+  }
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+.ant-modal-content {
+  border-radius: 0.5rem !important;
+}
+.custom-modal {
+  background-color: rgba(0, 0, 0, 0.4);
+}

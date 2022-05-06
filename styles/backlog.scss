@@ -1,0 +1,223 @@
+.backlog-item {
+  $summary-color: #212529;
+  $details-color: #343a40;
+
+  $veritcal-padding: 0.5rem;
+  $horizontal-padding: 1rem;
+
+  background-color: $summary-color;
+  color: white;
+
+  .backlog-summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding: $veritcal-padding $horizontal-padding;
+    cursor: pointer;
+  }
+
+  .backlog-title {
+    margin-right: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    h1 {
+      color: $text-color;
+      font-size: 0.876rem;
+      margin: 0;
+    }
+  }
+
+  .backlog-options {
+    display: flex;
+    align-items: center;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin: auto 0.5rem;
+      padding: 0.1rem;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background: $details-color;
+      }
+    }
+  }
+
+  .backlog-status {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: $text-color;
+    min-width: 7rem;
+    text-align: center;
+    cursor: pointer;
+
+    margin: auto 0.5rem;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: $details-color;
+    }
+  }
+
+  // summary {
+  //   @include flex-vertical-center;
+  //   justify-content: flex-end;
+  //   // border-bottom: 1px solid $text-color;
+  //   margin: 0;
+  //   padding: 0.5rem 1rem;
+  //   cursor: pointer;
+  //   transition: 0.2s;
+
+  //   select {
+  //     background: transparent;
+  //     border: none;
+  //     outline: none;
+  //     color: $text-color;
+  //     min-width: 7rem;
+  //     text-align: center;
+  //     cursor: pointer;
+  //   }
+
+  //   // select[data-status="done"] {
+  //   //   color: $secondary-dark;
+  //   // }
+  //   // select[data-status="in progress"] {
+  //   //   color: $primary-darker;
+  //   // }
+
+  //   .backlog-close {
+  //     visibility: hidden;
+  //     transition: 0.2s;
+  //   }
+  //   .backlog-close svg {
+  //     width: 15px;
+  //     height: 15px;
+  //     font-weight: bold;
+  //     color: red;
+  //     padding-left: 1rem;
+  //   }
+  // }
+
+  .backlog-content,
+  .backlog-content-editable {
+    background-color: $details-color;
+    padding: $veritcal-padding $horizontal-padding;
+  }
+
+  .backlog-content p {
+    color: $text-color;
+  }
+
+  .backlog-content-editable input,
+  .backlog-content-editable textarea {
+    all: reset;
+
+    background-color: #212529;
+    display: block;
+    width: 90%;
+    margin: 0.5rem auto;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+
+    &:focus-within,
+    &:focus {
+      outline: 2px ridge $primary-darker;
+      // border: none;
+    }
+  }
+
+  .backlog-content-editable .options {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    button {
+      padding: 0.5rem 1rem;
+      color: white;
+      margin-left: 0.5rem;
+    }
+
+    button:last-of-type {
+      background-color: $primary-dark;
+      margin-right: calc($horizontal-padding + 3.4%);
+
+      &:hover {
+        background-color: $primary-darker;
+      }
+    }
+  }
+}
+
+.backlog-item summary:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.backlog-item:first-of-type,
+.backlog-item:first-of-type summary {
+  border-top-right-radius: 0.7rem;
+  border-top-left-radius: 0.7rem;
+}
+.backlog-item:last-of-type,
+.backlog-item:last-of-type summary {
+  border-bottom-right-radius: 0.7rem;
+  border-bottom-left-radius: 0.7rem;
+}
+// details.backlog-item[open] summary {
+//   background: rgba(0, 0, 0, 0.7);
+// }
+#backlog-filters {
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 0.7rem;
+  background-color: #343a40;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  button,
+  select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #212529;
+    color: white;
+    text-transform: capitalize;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+
+    &:hover {
+      background-color: #0e0d0f;
+    }
+  }
+
+  .filter {
+    label {
+      padding-right: 1rem;
+      text-transform: uppercase;
+    }
+    select {
+      outline: none;
+      border: none;
+      text-align: center;
+      margin: auto .5rem;
+    }
+  }
+}
+
+select[data-status="DONE"] {
+  color: #a4dad9 !important;
+}
+select[data-status="INPROGRESS"] {
+  color: #f8e9c5 !important;
+}

@@ -1,0 +1,155 @@
+@import "./variables.module.scss";
+@import "./mixins.scss";
+@import "./login.scss";
+@import "./sidebar.scss";
+@import "./details.aside.scss";
+@import "./details.header.scss";
+@import "./details.scss";
+@import "./notes.scss";
+@import "./backlog.scss";
+@import "./features.scss";
+@import "./profile.scss";
+@import "./tasks.scss";
+@import "./ideas.scss";
+@import "./modals.scss";
+@import "./todo.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  background: $background;
+  color: $text-color !important;
+  font-family: "Poppins", sans-serif;
+}
+
+div {
+  color: $text-color !important;
+}
+button,
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gray);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0.8;
+  border-radius: 0.5rem;
+}
+#mainlayout {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dropdown-menu button {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  border: none;
+  background: transparent;
+  color: white;
+  display: block;
+  width: 100%;
+}
+.dropdown-menu button:hover {
+  background: var(--gray);
+}
+
+.maincontent {
+  box-sizing: border-box;
+  width: calc(100vw - $sidebar-width);
+}
+
+#details {
+  display: flex;
+}
+
+#details main {
+  width: 70%;
+}
+.divider {
+  border-top: 1px solid $text-color;
+  opacity: 0.2;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.err {
+  color: $error-color;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.editable {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+
+  article,
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    margin: 0;
+  }
+
+  &:hover,
+  &:focus-within {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.ant-tabs-ink-bar {
+  background-color: transparent;
+}
+// .ant-tabs-tab div {
+//   padding: 0.2rem 0.5rem;
+//   margin: auto 0.2rem;
+//   border-radius: 0.3rem;
+//   text-transform: capitalize;
+// }
+// .ant-tabs-tab-active div {
+//   color: white;
+//   background-color: $primary-darker;
+// }
+
+#add-technology-input {
+  width: 5rem;
+  background: "transparent";
+  border: "1px solid gray";
+  color: "white";
+
+  border-radius: .2rem;
+  display: inline-block;
+
+  &:focus {
+    outline: 2px ridge $primary-darker;
+  }
+}

@@ -1,0 +1,45 @@
+.feature {
+  @include flex-vertical-center;
+  transition: 0.2s;
+  padding: 0.4rem;
+  margin-top: .5rem;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .feature-prefix {
+    opacity: 0.7;
+    text-transform: capitalize;
+    padding-right: 1rem;
+    font-size: 0.765rem;
+    width: 15%;
+  }
+  .feature-remove {
+    color: red;
+    font-size: 1.2rem;
+    visibility: hidden;
+    margin-left: auto;
+    transition: 0.2s;
+  }
+
+  .feature-content {
+    display: block;
+    width: 75%;
+  }
+}
+.feature-editable {
+  background: rgba(0, 0, 0, 0.7);
+
+  input {
+    display: block;
+  }
+}
+
+.feature-remove {
+  visibility: hidden !important;
+  display: inline-block;
+  width: 10%;
+}
+.feature:hover .feature-remove {
+  visibility: visible !important;
+}

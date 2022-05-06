@@ -1,0 +1,30 @@
+#details-header {
+  display: flex;
+  align-items: center;
+
+  .searchbar {
+    width: 15rem;
+    margin-left: auto;
+    font-size: 0.876rem;
+  }
+}
+#idea-title {
+  color: $primary;
+}
+
+#idea-dates {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-size: 0.765rem;
+    padding-right: 0.5rem;
+  }
+  span::after {
+    content: " : ";
+  }
+  strong {
+    font-size: 0.876rem;
+    padding: 0.5rem;
+  }
+}
