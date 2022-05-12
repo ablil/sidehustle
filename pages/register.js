@@ -5,6 +5,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useSendEmailVerification,
 } from "react-firebase-hooks/auth";
+import notifier from "../helpers/notifier";
 import { auth } from "../services/config";
 
 const Login = () => {
@@ -52,9 +53,11 @@ const Login = () => {
     if (isDataValid) {
       createUserWithEmailAndPassword(data.email, data.password)
         .then((_) => sendEmailVerification())
-        .catch((err) => console.error(err));
+        .catch((err) =>
+          notifier.error(err, "failed to create user, try later !")
+        );
     } else {
-      console.warn("invalid registration data !");
+      notifier.error(new Error("Invalid registration data"));
     }
   };
 

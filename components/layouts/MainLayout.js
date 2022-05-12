@@ -11,8 +11,6 @@ const MainLayout = ({ children }) => {
     if (!user && !loading) {
       router.push("/login");
     }
-
-    console.log(user);
   }, [user, loading, router]);
 
   return user ? (

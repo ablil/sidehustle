@@ -78,7 +78,6 @@ const BacklogList = ({ keyword }) => {
   };
 
   const handleRemoveBacklog = (backlog) => {
-    console.log("backlog to remove: ", backlog);
     dispatch(removeBacklog(backlog));
     toggleBacklogLoading(backlog.id);
     service.backlog

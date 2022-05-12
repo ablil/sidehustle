@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useMemo } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import notifier from "../helpers/notifier";
 import { auth } from "../services/firebaseconfig";
 
 const Login = () => {
@@ -21,7 +22,7 @@ const Login = () => {
     if (user) router.push("/ideas");
 
     if (error) {
-      console.error(error);
+      notifier.error(error);
     }
   }, [user, loading, error, router]);
 
@@ -39,7 +40,7 @@ const Login = () => {
     if (isValid(data)) {
       signInWithEmailAndPassword(data.email, data.password);
     } else {
-      console.error("login data is invalid !");
+      notifier.error(new Error("login data is invalid"));
     }
   };
 

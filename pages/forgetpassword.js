@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
+import notifier from "../helpers/notifier";
 import { auth } from "../services/firebaseconfig";
 
 const Forgetpassword = () => {
@@ -22,7 +23,9 @@ const Forgetpassword = () => {
     if (email && email.length > 0) {
       sendPasswordResetEmail(email)
         .then((res) => setSent(true))
-        .catch((err) => console.error(err));
+        .catch((err) =>
+          notifier.error(err, "failed to send email, try again !")
+        );
     }
   };
   return (

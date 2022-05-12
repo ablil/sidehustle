@@ -64,7 +64,6 @@ const Task = () => {
         .update(todo)
         .catch((err) => notifier.error(err, "failed to update todo"));
     }
-    console.log("save todo: ", todo);
   };
 
   const toggleAddTask = () => {
