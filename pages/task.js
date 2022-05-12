@@ -85,7 +85,7 @@ const Task = () => {
       .then((res) => dispatch(replaceAllTodos(res)))
       .catch((err) => notifier.error(err, "failed to load data"))
       .finally(() => dispatch(toggleTodoLoading(false)));
-  }, []);
+  }, [dispatch]);
 
   if (loadingTodos) return "Loading ...";
   return (

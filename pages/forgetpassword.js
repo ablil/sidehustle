@@ -16,7 +16,7 @@ const Forgetpassword = () => {
     if (!sending && !error && sent) {
       router.push("/confirmation/forgetpassword");
     }
-  }, [sending, error, sent]);
+  }, [sending, error, sent, router]);
 
   const handleSubmit = (evt) => {
     evt.preventDefault();

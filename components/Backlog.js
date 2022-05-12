@@ -48,7 +48,7 @@ const Backlog = ({ editable, backlog, toggleEdit, onRemove, onSave }) => {
 
   useEffect(() => {
     setData({ title: backlog.title, content: backlog.content });
-  }, []);
+  }, [backlog.content, backlog.title]);
 
   return (
     <details className="backlog-item">

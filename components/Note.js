@@ -29,7 +29,7 @@ const Note = ({ editable, note, toggleEdit, onRemove, onSave }) => {
   useEffect(() => {
     if (note?.content) setContent(note.content);
     if (editable) inp.current.focus();
-  }, []);
+  }, [editable, note.content]);
 
   return (
     <section

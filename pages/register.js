@@ -6,7 +6,7 @@ import {
   useSendEmailVerification,
 } from "react-firebase-hooks/auth";
 import notifier from "../helpers/notifier";
-import { auth } from "../services/config";
+import { auth } from "../services/firebaseconfig";
 
 const Login = () => {
   const [data, setData] = useState({

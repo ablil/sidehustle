@@ -20,7 +20,7 @@ const Feature = ({ feature, editable, handleSubmit, onRemove, toggleEdit }) => {
     if (editable) {
       inp.current.focus();
     }
-  }, []);
+  }, [editable, feature.content]);
 
   return (
     <article className={`feature ${editable ? "feature-editable" : ""}`}>
