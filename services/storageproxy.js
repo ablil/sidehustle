@@ -7,5 +7,4 @@ const storageProxy = {
   },
 };
 
-
 export default storageProxy;

@@ -63,13 +63,11 @@ const Todo = ({ todo, editable, toggleEdit, onSave, onRemove }) => {
             <p>{todo.content}</p>
             <p>
               <small>
-                {todo.created
-                  ?.toDate()
-                  .toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                {todo.created?.toDate().toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </small>
             </p>
           </p>

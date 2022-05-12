@@ -37,7 +37,7 @@ const Login = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (isValid(data)) {
-      signInWithEmailAndPassword(data.email, data.password)
+      signInWithEmailAndPassword(data.email, data.password);
     } else {
       console.error("login data is invalid !");
     }

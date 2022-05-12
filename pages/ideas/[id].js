@@ -14,7 +14,7 @@ import notifier from "../../helpers/notifier";
 import {
   setSelectedIdea,
   toggleLoading,
-  updateIdea
+  updateIdea,
 } from "../../redux/slices/idea";
 import service from "../../services/firebaseservice";
 

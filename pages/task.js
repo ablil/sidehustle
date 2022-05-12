@@ -94,7 +94,7 @@ const Task = () => {
       <section className="todos-container">
         <header>
           <input
-          className="searchbar"
+            className="searchbar"
             type="text"
             value={keyword}
             onChange={handleKeywordChange}

@@ -8,7 +8,7 @@ import {
   removeFeature,
   replaceAllFeatures,
   toggleFeatureLoading,
-  updateFeature
+  updateFeature,
 } from "../redux/slices/feature";
 import service from "../services/firebaseservice";
 import Feature from "./Feature";
@@ -43,12 +43,12 @@ const Features = () => {
         .catch((err) => notifier.error(err, "failed to create feature"))
         .finally(() => setEditMode(false));
     } else {
-      setEditable(undefined)
+      setEditable(undefined);
       service.feature
         .update(feature.id, id, feature)
         .then(() => dispatch(updateFeature(feature)))
-        .catch((err) => notifier.error(err, "failed to update feature"))
-        // .finally(() => setEditable(undefined));
+        .catch((err) => notifier.error(err, "failed to update feature"));
+      // .finally(() => setEditable(undefined));
     }
   };
 

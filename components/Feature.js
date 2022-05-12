@@ -47,15 +47,15 @@ const Feature = ({ feature, editable, handleSubmit, onRemove, toggleEdit }) => {
           {feature.content}
         </article>
       )}
-        <button
-          data-id={feature.id}
-          className="feature-remove"
-          title="cancel modification"
-          style={{ visibility: "visible" }}
-          onClick={onRemove}
-        >
-          &times;
-        </button>
+      <button
+        data-id={feature.id}
+        className="feature-remove"
+        title="cancel modification"
+        style={{ visibility: "visible" }}
+        onClick={onRemove}
+      >
+        &times;
+      </button>
     </article>
   );
 };
