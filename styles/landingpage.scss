@@ -21,18 +21,20 @@
 
     &:last-child {
       background-color: white;
+    border-radius: .5rem;
       color: black;
     }
   }
 }
 
 #main-banner {
-  max-width: $landing-page-width;
   margin: auto;
-  padding-top: 5rem;
   text-align: center;
+  background-color: black;
+  padding-bottom: 5rem;
 
   header {
+    padding-top: 5rem;
     font-size: 2rem;
     color: white;
     font-weight: bold;
@@ -51,25 +53,37 @@
   footer a {
     padding: 0.5rem 2rem;
     background-color: white;
+    border-radius: .5rem;
     color: black;
   }
 }
 
-#showcase {
-  max-width: $landing-page-width;
-  margin: 4rem auto;
-  padding: 4rem auto;
-  display: block;
+.showcase {
+  padding: 1rem 4rem;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to left bottom, #1c1d1f, black);
+  
+  p {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    width: 30%;
+  }
 
   img {
-    border: 1rem solid black;
-    box-shadow: 0 0 1rem 1rem rgba(0,0,0, .7);
+    box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.3);
     border-radius: 1rem;
     display: block;
     margin: 4rem auto;
-    width: 90%;
+    max-width: 65%;
     height: auto;
   }
+}
+
+.showcase:nth-child(2n+1) {
+  background: linear-gradient(to left top, #1c1d1f, black);
+  flex-direction: row-reverse;
 }
 
 #features {
@@ -152,7 +166,7 @@
         padding-left: 0;
 
         li {
-          padding: .5rem 2rem;
+          padding: 0.5rem 2rem;
 
           a:hover {
             color: white;
