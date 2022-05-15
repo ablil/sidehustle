@@ -7,7 +7,7 @@ import Plus from "../../components/icons/Plus";
 import IdeaSummary from "../../components/IdeaSummary";
 import MainLayout from "../../components/layouts/MainLayout";
 import notifier from "../../helpers/notifier";
-import {
+import idea, {
   addIdea,
   removeIdea,
   replaceAllIdeas,
@@ -53,12 +53,17 @@ const Ideas = () => {
   };
 
   useEffect(() => {
-    dispatch(toggleLoading(true));
-    service.idea
-      .loadAll()
-      .then((docs) => dispatch(replaceAllIdeas(docs)))
-      .catch((err) => notifier.error(err, "failed to load data"))
-      .finally(() => dispatch(toggleLoading(false)));
+    if (!ideas || ideas.length === 0) {
+      console.log("loaded from api");
+      dispatch(toggleLoading(true));
+      service.idea
+        .loadAll()
+        .then((docs) => dispatch(replaceAllIdeas(docs)))
+        .catch((err) => notifier.error(err, "failed to load data"))
+        .finally(() => dispatch(toggleLoading(false)));
+    } else {
+      console.log("loaded from cache");
+    }
 
     return () => {};
   }, [dispatch]);

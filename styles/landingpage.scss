@@ -1,0 +1,164 @@
+#landingpage-navbar {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: $landing-page-width;
+  margin: auto;
+
+  h1 {
+    color: $text-color;
+    margin-right: auto;
+  }
+
+  a {
+    padding: 0.5rem 2rem;
+
+    &:hover {
+      color: $text-color;
+    }
+
+    &:last-child {
+      background-color: white;
+      color: black;
+    }
+  }
+}
+
+#main-banner {
+  max-width: $landing-page-width;
+  margin: auto;
+  padding-top: 5rem;
+  text-align: center;
+
+  header {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  article {
+    font-weight: bold;
+    font-size: 1.5rem;
+    max-width: 70%;
+    margin: auto;
+  }
+
+  footer {
+    margin: 3rem auto;
+  }
+  footer a {
+    padding: 0.5rem 2rem;
+    background-color: white;
+    color: black;
+  }
+}
+
+#showcase {
+  max-width: $landing-page-width;
+  margin: 4rem auto;
+  padding: 4rem auto;
+  display: block;
+
+  img {
+    border: 1rem solid black;
+    box-shadow: 0 0 1rem 1rem rgba(0,0,0, .7);
+    border-radius: 1rem;
+    display: block;
+    margin: 4rem auto;
+    width: 90%;
+    height: auto;
+  }
+}
+
+#features {
+  background-color: black;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  header,
+  section {
+    max-width: $landing-page-width;
+    margin: auto;
+  }
+
+  header {
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  section {
+    display: flex;
+    justify-content: space-evenly;
+
+    .feature {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+
+      &:hover {
+        p {
+          color: white;
+        }
+      }
+
+      h1 {
+        font-weight: bold;
+        color: white;
+        text-transform: capitalize;
+      }
+
+      p {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+#landingpage-footer {
+  max-width: $landing-page-width;
+  margin: auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    section {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+      text-transform: capitalize;
+
+      h1 {
+        color: white;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+
+        li {
+          padding: .5rem 2rem;
+
+          a:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
