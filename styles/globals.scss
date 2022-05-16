@@ -130,16 +130,6 @@ button {
 .ant-tabs-ink-bar {
   background-color: transparent;
 }
-// .ant-tabs-tab div {
-//   padding: 0.2rem 0.5rem;
-//   margin: auto 0.2rem;
-//   border-radius: 0.3rem;
-//   text-transform: capitalize;
-// }
-// .ant-tabs-tab-active div {
-//   color: white;
-//   background-color: $primary-darker;
-// }
 
 #add-technology-input {
   width: 5rem;
@@ -157,6 +147,8 @@ button {
 
 #__next {
   height: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 #loading {

@@ -65,6 +65,7 @@ const Login = () => {
     <section id="login">
       <form onSubmit={register}>
         <header>Sign up for free, now.</header>
+        <p>create an account and do not miss the opportunity</p>
         <input
           type="email"
           placeholder="type your email"
@@ -114,7 +115,7 @@ const Login = () => {
       </form>
 
       <footer>
-        <Link href="/login">already have an account</Link>
+        <Link href="/login">already have an account ? </Link>
       </footer>
     </section>
   );

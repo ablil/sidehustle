@@ -1,46 +1,57 @@
 #login {
-  animation: fadein;
-  animation-duration: 1s;
-}
-#login {
-  max-width: 20rem;
-  margin: auto;
-  margin-top: 7rem;
+  box-sizing: border-box;
+  overflow: hidden;
   text-align: center;
+  background-color: black;
+  height: 100%;
+  background: linear-gradient(to left bottom, #1c1d1f, black);
+  width: 100%;
 }
 #login header {
   font-weight: bold;
   color: $primary;
-  font-size: 1.24rem;
+  font-size: 2rem;
   text-transform: capitalize;
+  color: white;
+}
+#login p {
+  color: $text-color;
 }
 #login form {
+  padding-top: 6rem;
   display: flex;
   flex-direction: column;
+  max-width: 25rem;
+  margin: auto;
 }
-#login input,
-#login button {
+#login input {
   display: block;
   width: 100%;
   padding: 0.5rem;
-  margin: 0.5rem;
-  border: 1px solid $primary;
+  margin: 0.7rem auto;
+  border-bottom: 1px solid $text-color;
   background: transparent;
   color: white;
-  box-sizing: border-box;
 }
 
 #login button {
-  background: $primary;
+  background-color: white;
+  color: black;
   text-transform: uppercase;
   font-size: 0.654rem;
   font-weight: bold;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  &:hover {
+    background-color: white;
+  }
 }
 #login button:disabled {
-  background: $primary-light;
+  background: $text-color;
 }
 #login button:hover:not(:disabled) {
-  background: $primary-dark !important;
+  background: $text-color !important;
 }
 
 #login input:invalid {
@@ -50,19 +61,36 @@
 #login footer {
   font-size: 0.765rem;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  padding-top: .5rem;
+  text-transform: capitalize;
+  strong {
+    padding-left: .2rem;
+  }
 }
+
+#login .footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  
+  input[type=checkbox] {
+    width: min-content;
+    margin: .2rem;
+  }
+
+  a {
+    display: block;
+    margin-left: auto;
+  }
+}
+
 
 #login footer a:hover {
   color: $primary-light;
-}
-@keyframes fadein {
-  from {
-    opacity: 0;
-    transform: scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
 }

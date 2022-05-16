@@ -48,11 +48,13 @@ const Login = () => {
   return (
     <section id="login">
       <form onSubmit={handleSubmit}>
-        <header>login to {metadata.brand}</header>
+        <header>welcome back !</header>
+        <p>please enter your details to login</p>
         <input
           type="email"
           placeholder="type your email"
           value={data.email}
+          autoFocus={true}
           onChange={(evt) =>
             setData((old) => ({ ...old, email: evt.target.value }))
           }
@@ -67,6 +69,13 @@ const Login = () => {
           }
           disabled={loading}
         />
+
+        <article className="footer">
+          <input type="checkbox" id="remember" />
+          <label htmlFor="rememberme">Remember me</label>
+          <Link href="/forgetpassword">Forget password ?</Link>
+        </article>
+
         {!loading && (
           <button
             type="submit"
@@ -78,8 +87,10 @@ const Login = () => {
         {error && <article className="err">{loginError}</article>}
       </form>
       <footer>
-        <Link href="/register">create an account</Link>
-        <Link href="/forgetpassword">forget password ?</Link>
+        <span>Do not have an account ?</span>
+        <strong>
+          <Link href="/register">Signup for free</Link>
+        </strong>
       </footer>
     </section>
   );
