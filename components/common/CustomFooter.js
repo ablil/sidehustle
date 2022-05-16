@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import metadata from "../../metadata";
 
@@ -9,10 +10,11 @@ const CustomFooter = () => {
           <h1>resources</h1>
           <ul>
             <li>
+              {/* TODO: contact page */}
               <a href="#">contact us</a>
             </li>
             <li>
-              <a href="#">privacy policy</a>
+              <Link href="/privacypolicy">privacy policy</Link>
             </li>
           </ul>
         </section>
@@ -30,7 +32,9 @@ const CustomFooter = () => {
       </div>
       <footer>
         <article>&copy; All rights reserved {new Date().getFullYear()}</article>
-        <article>{metadata.brand}</article>
+        <article>
+          <Link href="/">{metadata.brand}</Link>
+        </article>
       </footer>
     </footer>
   );
