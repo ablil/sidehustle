@@ -25,7 +25,9 @@ export default function Home() {
         </section>
 
         <section className="showcase">
-          <p>Save all your ideas in one place with quick and easy access</p>
+          <p>
+            Save all your side hustles in one place with quick and easy access
+          </p>
           <img src="/images/showcase/dashboard.png" alt="dashboard" />
         </section>
         <section className="showcase">

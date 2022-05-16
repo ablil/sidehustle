@@ -1,4 +1,5 @@
 import React from "react";
+import metadata from "../../metadata";
 
 const CustomFooter = () => {
   return (
@@ -29,7 +30,7 @@ const CustomFooter = () => {
       </div>
       <footer>
         <article>&copy; All rights reserved {new Date().getFullYear()}</article>
-        <article>ideastab</article>
+        <article>{metadata.brand}</article>
       </footer>
     </footer>
   );

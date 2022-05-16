@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState, useMemo } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import notifier from "../helpers/notifier";
+import metadata from "../metadata";
 import { auth } from "../services/firebaseconfig";
 
 const Login = () => {
@@ -47,7 +48,7 @@ const Login = () => {
   return (
     <section id="login">
       <form onSubmit={handleSubmit}>
-        <header>login to ideastab</header>
+        <header>login to {metadata.brand}</header>
         <input
           type="email"
           placeholder="type your email"

@@ -10,6 +10,7 @@ import User from "./icons/User";
 import { auth } from "../services/firebaseconfig";
 import { useRouter } from "next/router";
 import { useAuthState } from "react-firebase-hooks/auth";
+import metadata from "../metadata";
 
 const routes = [
   {
@@ -40,7 +41,7 @@ const Sidebar = () => {
   return (
     <nav id="sidebar">
       <header>
-        <h1>Sidehustle</h1>
+        <h1>{metadata.brand}</h1>
       </header>
       {routes.map((route) => (
         <article
