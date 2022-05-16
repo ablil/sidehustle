@@ -10,8 +10,7 @@ const CustomFooter = () => {
           <h1>resources</h1>
           <ul>
             <li>
-              {/* TODO: contact page */}
-              <a href="#">contact us</a>
+              <Link href="/contactus">contact us</Link>
             </li>
             <li>
               <Link href="/privacypolicy">privacy policy</Link>

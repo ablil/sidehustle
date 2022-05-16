@@ -21,7 +21,7 @@
 
     &:last-child {
       background-color: white;
-    border-radius: .5rem;
+      border-radius: 0.5rem;
       color: black;
     }
   }
@@ -53,7 +53,7 @@
   footer a {
     padding: 0.5rem 2rem;
     background-color: white;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     color: black;
   }
 }
@@ -63,7 +63,7 @@
   display: flex;
   align-items: center;
   background: linear-gradient(to left bottom, #1c1d1f, black);
-  
+
   p {
     color: white;
     font-weight: bold;
@@ -81,7 +81,7 @@
   }
 }
 
-.showcase:nth-child(2n+1) {
+.showcase:nth-child(2n + 1) {
   background: linear-gradient(to left top, #1c1d1f, black);
   flex-direction: row-reverse;
 }
@@ -167,12 +167,11 @@
 
         li {
           padding: 0.5rem 2rem;
-
-          a:hover {
-            color: white;
-          }
         }
       }
     }
+  }
+  a:hover {
+    color: white;
   }
 }

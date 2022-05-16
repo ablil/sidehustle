@@ -177,31 +177,54 @@ button {
   }
 }
 
-#privacypolicy {
-  width: 100%;
+#contactus {
+  background-color: black;
   height: 100%;
-  background: black;
 
-  .wrapper {
-    max-width: $landing-page-width;
+  header {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 3rem;
+  }
+
+  form, .wrapper {
+    max-width: 25rem;
     margin: auto;
   }
 
-  font-size: 1.5rem;
-
-  header {
-  color: white;
-  padding-top: 2rem;
-    text-transform: capitalize;
-    font-size: 2rem;
-    font-weight: bold;
+  .wrapper {
+    max-width: $landing-page-width;
+    
+    .article {
+      padding-top: 1rem;
+      font-size: 1.5rem;
+    }
   }
 
-  article {
-    color: $text-color;
-    padding-top: 2rem;
+  input,
+  textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $text-color;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+    outline: none;
   }
-  article:first-child {
-    color: white;
+
+  button {
+    background-color: white;
+    color: black;
+    width: 100%;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
