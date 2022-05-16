@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebaseconfig";
+import Loading from "../icons/Loading";
 import Sidebar from "../Sidebar";
 
 const MainLayout = ({ children }) => {
@@ -19,7 +20,7 @@ const MainLayout = ({ children }) => {
       <div className="maincontent">{children}</div>
     </section>
   ) : (
-    <article>loading ...</article>
+    <Loading />
   );
 };
 

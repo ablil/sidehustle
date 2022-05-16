@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
+import Loading from "../components/icons/Loading";
 import Plus from "../components/icons/Plus";
 import MainLayout from "../components/layouts/MainLayout";
 import Todo from "../components/Todo";
@@ -87,7 +88,7 @@ const Task = () => {
       .finally(() => dispatch(toggleTodoLoading(false)));
   }, [dispatch]);
 
-  if (loadingTodos) return "Loading ...";
+  if (loadingTodos) return <Loading />;
   return (
     <MainLayout>
       <section className="todos-container">

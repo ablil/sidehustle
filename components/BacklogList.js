@@ -13,6 +13,7 @@ import {
 import service from "../services/firebaseservice";
 import Backlog from "./Backlog";
 import CustomModal from "./common/CustomModal";
+import Loading from "./icons/Loading";
 
 const BacklogList = ({ keyword }) => {
   const router = useRouter();
@@ -130,7 +131,7 @@ const BacklogList = ({ keyword }) => {
     }
   };
 
-  if (loading) return "loading ...";
+  if (loading) return null;
   return (
     <section>
       <header className="tab-content-header">

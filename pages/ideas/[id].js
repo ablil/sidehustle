@@ -8,6 +8,7 @@ import BacklogList from "../../components/BacklogList";
 import CustomModal from "../../components/common/CustomModal";
 import ExternalLink from "../../components/common/ExternalLink";
 import Close from "../../components/icons/Close";
+import Loading from "../../components/icons/Loading";
 import MainLayout from "../../components/layouts/MainLayout";
 import NoteList from "../../components/NoteList";
 import notifier from "../../helpers/notifier";
@@ -164,7 +165,7 @@ const Details = () => {
   };
 
   if (loadingIdea) {
-    return "loading ...";
+    return <Loading />;
   }
   if (idea) {
     return (

@@ -154,3 +154,33 @@ button {
     outline: 2px ridge $primary-darker;
   }
 }
+
+#__next {
+  height: 100%;
+}
+
+#loading {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  svg {
+    animation: loading 3s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes loading {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

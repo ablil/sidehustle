@@ -86,7 +86,7 @@ const NoteList = ({ keyword }) => {
   };
 
   if (loadingNote) {
-    return "loading notes";
+    return null;
   } else if (notes) {
     return (
       <section id="notes">
