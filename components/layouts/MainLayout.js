@@ -8,11 +8,13 @@ import Sidebar from "../Sidebar";
 const MainLayout = ({ children }) => {
   const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
+
   useEffect(() => {
-    if (!user && !loading) {
+    if (!user) {
       router.push("/login");
+      window.localStorage.removeItem("uid");
     }
-  }, [user, loading, router]);
+  }, [user]);
 
   return user ? (
     <section id="mainlayout">

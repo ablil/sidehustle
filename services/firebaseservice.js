@@ -118,6 +118,11 @@ const service = {
       return firestoreProxy.removeDoc(id, "todos");
     },
   },
+  contact: {
+    save: (id, data) => {
+      return firestoreProxy.createDoc(id, "contactus", data);
+    },
+  },
 };
 
 export default service;

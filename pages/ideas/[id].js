@@ -1,6 +1,7 @@
 import { notification, Tabs, Tag } from "antd";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { StickyContainer } from "react-sticky";
 import { v4 } from "uuid";
@@ -17,11 +18,13 @@ import {
   toggleLoading,
   updateIdea,
 } from "../../redux/slices/idea";
+import { auth } from "../../services/firebaseconfig";
 import service from "../../services/firebaseservice";
 
 const Details = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [user] = useAuthState(auth);
 
   const idea = useSelector((state) => state.ideas.current);
   const loadingIdea = useSelector((state) => state.ideas.loading);
@@ -39,7 +42,7 @@ const Details = () => {
 
   useEffect(() => {
     if (!id) return;
-
+    if (!user) return;
     dispatch(toggleLoading(true));
     service.idea
       .loadSingle(id)
@@ -49,7 +52,7 @@ const Details = () => {
       })
       .catch((err) => notifier.error(err, "failed to load idea"))
       .finally(() => dispatch(toggleLoading(false)));
-  }, [dispatch, id]);
+  }, [dispatch, id, router, user]);
 
   const updateAttribute = (attr, value) => {
     // for some reason, useState does not update immediatly,
@@ -346,7 +349,7 @@ const Details = () => {
       </MainLayout>
     );
   } else {
-    return "an error occured";
+    return "";
   }
 };
 

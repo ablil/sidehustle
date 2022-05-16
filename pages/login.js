@@ -20,7 +20,10 @@ const Login = () => {
   );
 
   useEffect(() => {
-    if (user) router.push("/ideas");
+    if (user) {
+      router.push("/ideas");
+      window.localStorage.setItem("uid", user.user.uid);
+    }
 
     if (error) {
       notifier.error(error);
