@@ -10,11 +10,11 @@ const MainLayout = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    if (!user) {
+    if (!loading && !user) {
       router.push("/login");
       window.localStorage.removeItem("uid");
     }
-  }, [user]);
+  }, [loading, router, user]);
 
   return user ? (
     <section id="mainlayout">
