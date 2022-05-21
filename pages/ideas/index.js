@@ -54,7 +54,6 @@ const Ideas = () => {
 
   useEffect(() => {
     if (!ideas || ideas.length === 0) {
-      console.log("loaded from api");
       dispatch(toggleLoading(true));
       service.idea
         .loadAll()
@@ -62,7 +61,6 @@ const Ideas = () => {
         .catch((err) => notifier.error(err, "failed to load data"))
         .finally(() => dispatch(toggleLoading(false)));
     } else {
-      console.log("loaded from cache");
     }
 
     return () => {};

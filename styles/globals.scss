@@ -228,3 +228,31 @@ button {
     }
   }
 }
+
+#notfound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+
+  .content {
+    background: black;
+    padding: 2rem;
+    border-radius: 1rem;
+
+    width: 70%;
+    max-width: 96rem;
+
+    h1 {
+      color: white;
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    svg {
+      max-width: 50%;
+      height: auto;
+    }
+  }
+}
