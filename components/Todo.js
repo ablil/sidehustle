@@ -18,6 +18,12 @@ const Todo = ({ todo, editable, toggleEdit, onSave, onRemove }) => {
     toggleEdit(todo.id);
   };
 
+  const onEnter = (evt) => {
+    if (evt.key === "Enter") {
+      handleBlur();
+    }
+  };
+
   const toggleStatus = (evt) => {
     onSave({ ...todo, completed: !todo.completed });
   };
@@ -50,6 +56,7 @@ const Todo = ({ todo, editable, toggleEdit, onSave, onRemove }) => {
             type="text"
             onChange={handleChange}
             onBlur={handleBlur}
+            onKeyDown={onEnter}
             value={content}
             placeholder="Type here"
           />
