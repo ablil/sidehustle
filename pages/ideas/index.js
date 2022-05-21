@@ -7,6 +7,7 @@ import Plus from "../../components/icons/Plus";
 import IdeaSummary from "../../components/IdeaSummary";
 import MainLayout from "../../components/layouts/MainLayout";
 import notifier from "../../helpers/notifier";
+import gtm from "../../lib/gtm";
 import idea, {
   addIdea,
   removeIdea,
@@ -46,6 +47,8 @@ const Ideas = () => {
   const handleFilterChange = (evt) => {
     const filter = evt.currentTarget.dataset.filter;
     setFilter(filter || "all");
+
+    gtm.ideas.triggerstatus(filter);
   };
 
   const handleKeywordChange = (evt) => {

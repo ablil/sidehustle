@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { v4 } from "uuid";
 import CustomFooter from "../components/common/CustomFooter";
 import notifier from "../helpers/notifier";
+import gtm from "../lib/gtm";
 import { auth } from "../services/firebaseconfig";
 import service from "../services/firebaseservice";
 
@@ -14,6 +15,8 @@ const Contactus = () => {
     signInAnonymously(auth).then(() => service.contact.save(v4(), data));
     notifier.success("submitted", "We will get back to you soon");
     setData({ email: "", content: "" });
+
+    gtm.contact();
   };
   return (
     <section id="contactus">

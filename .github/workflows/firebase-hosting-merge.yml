@@ -20,6 +20,7 @@ jobs:
           NEXT_PUBLIC_MESSAGINSENDERID: ${{secrets.NEXT_PUBLIC_MESSAGINSENDERID}}
           NEXT_PUBLIC_APPID: ${{secrets.NEXT_PUBLIC_APPID}}
           NEXT_PUBLIC_MEASUREMENTID: ${{secrets.NEXT_PUBLIC_MEASUREMENTID}}
+          NEXT_PUBLIC_GOOGLE_ANALYTICS: ${{secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS}}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

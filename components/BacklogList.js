@@ -13,7 +13,7 @@ import {
 import service from "../services/firebaseservice";
 import Backlog from "./Backlog";
 import CustomModal from "./common/CustomModal";
-import Loading from "./icons/Loading";
+import gtm from "../lib/gtm";
 
 const BacklogList = ({ keyword }) => {
   const router = useRouter();
@@ -129,6 +129,10 @@ const BacklogList = ({ keyword }) => {
       else
         setFilters((old) => ({ ...old, sort: { ...old.sort, [attr]: value } }));
     }
+
+    if (attr == "status") gtm.backlog.filterbystatus(value);
+    if (attr === "by") gtm.backlog.sortby(value);
+    if (attr === "order") gtm.backlog.orderby(value);
   };
 
   if (loading) return null;

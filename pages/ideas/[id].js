@@ -13,6 +13,7 @@ import Loading from "../../components/icons/Loading";
 import MainLayout from "../../components/layouts/MainLayout";
 import NoteList from "../../components/NoteList";
 import notifier from "../../helpers/notifier";
+import gtm from "../../lib/gtm";
 import {
   setSelectedIdea,
   toggleLoading,
@@ -167,6 +168,10 @@ const Details = () => {
     }
   };
 
+  const onTabChange = (key) => {
+    gtm.ideas.selecttab(key == 2 ? "backlog" : "notes");
+  };
+
   if (loadingIdea) {
     return <Loading />;
   }
@@ -194,7 +199,7 @@ const Details = () => {
 
             <section id="details-main">
               <StickyContainer>
-                <Tabs defaultActiveKey="2" centered>
+                <Tabs defaultActiveKey="2" onChange={onTabChange} centered>
                   <Tabs.TabPane tab="Notes" key="1">
                     <NoteList keyword={keyword} />
                   </Tabs.TabPane>

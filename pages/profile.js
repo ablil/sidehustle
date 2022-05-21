@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { StickyContainer } from "react-sticky";
 import MainLayout from "../components/layouts/MainLayout";
 import notifier from "../helpers/notifier";
+import gtm from "../lib/gtm";
 import { auth } from "../services/firebaseconfig";
 import firebaseservice from "../services/firebaseservice";
 
@@ -88,6 +89,8 @@ const Profile = () => {
     if (files && files.length) {
       setFiles((old) => old.concat(Array.from(files)));
     }
+
+    gtm.profile.updatepicture();
   };
 
   const isFileValid = (file) => {
@@ -114,6 +117,11 @@ const Profile = () => {
       }
     }
   };
+
+  const onTabChange = (key) => {
+    gtm.profile.selecttab(key == 1 ? "username" : "password");
+  };
+
   return (
     <MainLayout>
       <div id="profile">
@@ -167,7 +175,7 @@ const Profile = () => {
         </form>
 
         <StickyContainer>
-          <Tabs defaultActiveKey="1" centered>
+          <Tabs defaultActiveKey="1" onChange={onTabChange} centered>
             <Tabs.TabPane tab="change username" key="1">
               <form className="profile-form" onSubmit={updateUsername}>
                 <article>
