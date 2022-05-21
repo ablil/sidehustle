@@ -1,4 +1,5 @@
 import { Tabs } from "antd";
+import { NextSeo } from "next-seo";
 import { signOut } from "firebase/auth";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -123,142 +124,145 @@ const Profile = () => {
   };
 
   return (
-    <MainLayout>
-      <div id="profile">
-        <form className="profile-header" onSubmit={handleUpdateProfile}>
-          <label htmlFor="profile-picture" title="click to upload ">
-            {user?.photoURL ? (
-              <img
-                className="profile-picture"
-                src={user.photoURL}
-                width={200}
-                height="auto"
-              />
-            ) : (
-              <Image
-                className="profile-picture"
-                src="/icons/default-profile-pictures.png"
-                height={200}
-                width={200}
-                alt="change pictuer"
-              />
-            )}
-          </label>
-          <input
-            type="file"
-            accept="image/*"
-            id="profile-picture"
-            onChange={handleFileChange}
-            style={{
-              display: "none",
-            }}
-          />
-          <h2>
-            <span style={{ marginLeft: "1rem" }}>{user?.email}</span>
-            {!user?.emailVerified && (
-              <>
-                <small className="profile-status">not verified</small>
-                <button
-                  onClick={sendVerificationEmail}
-                  className="verification-email"
-                >
-                  send verification email
-                </button>
-              </>
-            )}
-          </h2>
-          {files && files.length > 0 && (
-            <button type="submit" style={{ marginBottom: "1rem" }}>
-              upload
-            </button>
-          )}
-        </form>
-
-        <StickyContainer>
-          <Tabs defaultActiveKey="1" onChange={onTabChange} centered>
-            <Tabs.TabPane tab="change username" key="1">
-              <form className="profile-form" onSubmit={updateUsername}>
-                <article>
-                  <label>email (un-editable)</label>
-                  <input type="email" value={user?.email} disabled />
-                </article>
-                <article>
-                  <label>username</label>
-                  <input
-                    type="text"
-                    placeholder="@username"
-                    data-attr="username"
-                    value={data.username}
-                    onChange={handleChange}
-                  />
-                </article>
-                <footer>
-                  <button type="submit" disabled={doesUpdateInfoFormDisabeld}>
-                    update
+    <>
+      <NextSeo title="Profile" />
+      <MainLayout>
+        <div id="profile">
+          <form className="profile-header" onSubmit={handleUpdateProfile}>
+            <label htmlFor="profile-picture" title="click to upload ">
+              {user?.photoURL ? (
+                <img
+                  className="profile-picture"
+                  src={user.photoURL}
+                  width={200}
+                  height="auto"
+                />
+              ) : (
+                <Image
+                  className="profile-picture"
+                  src="/icons/default-profile-pictures.png"
+                  height={200}
+                  width={200}
+                  alt="change pictuer"
+                />
+              )}
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              id="profile-picture"
+              onChange={handleFileChange}
+              style={{
+                display: "none",
+              }}
+            />
+            <h2>
+              <span style={{ marginLeft: "1rem" }}>{user?.email}</span>
+              {!user?.emailVerified && (
+                <>
+                  <small className="profile-status">not verified</small>
+                  <button
+                    onClick={sendVerificationEmail}
+                    className="verification-email"
+                  >
+                    send verification email
                   </button>
-                </footer>
-              </form>
-            </Tabs.TabPane>
-            <Tabs.TabPane tab="change password" key="2">
-              <section className="profile-form">
-                <article>
-                  <label>old password</label>
-                  <input
-                    type="password"
-                    placeholder="**************"
-                    data-attr="old"
-                    value={data.old}
-                    onChange={handleChange}
-                  />
-                </article>
-                <article>
-                  <label>new password</label>
-                  <input
-                    type="password"
-                    placeholder="**************"
-                    data-attr="newpassword"
-                    onChange={handleChange}
-                  />
-                </article>
-                <article>
-                  <label>new password again</label>
-                  <input
-                    type="password"
-                    placeholder="**************"
-                    data-attr="retypepassword"
-                    value={data.retypepassword}
-                    onChange={handleChange}
-                  />
-                </article>
+                </>
+              )}
+            </h2>
+            {files && files.length > 0 && (
+              <button type="submit" style={{ marginBottom: "1rem" }}>
+                upload
+              </button>
+            )}
+          </form>
 
-                <article>
-                  {!doesPasswordMatch && (
-                    <span className="invalidpassword">Do NOT match!</span>
-                  )}
-                </article>
-                <button
-                  disabled={isChangePasswordDisabled}
-                  onClick={changePassword}
-                >
-                  change password
-                </button>
-              </section>
-            </Tabs.TabPane>
-          </Tabs>
-        </StickyContainer>
+          <StickyContainer>
+            <Tabs defaultActiveKey="1" onChange={onTabChange} centered>
+              <Tabs.TabPane tab="change username" key="1">
+                <form className="profile-form" onSubmit={updateUsername}>
+                  <article>
+                    <label>email (un-editable)</label>
+                    <input type="email" value={user?.email} disabled />
+                  </article>
+                  <article>
+                    <label>username</label>
+                    <input
+                      type="text"
+                      placeholder="@username"
+                      data-attr="username"
+                      value={data.username}
+                      onChange={handleChange}
+                    />
+                  </article>
+                  <footer>
+                    <button type="submit" disabled={doesUpdateInfoFormDisabeld}>
+                      update
+                    </button>
+                  </footer>
+                </form>
+              </Tabs.TabPane>
+              <Tabs.TabPane tab="change password" key="2">
+                <section className="profile-form">
+                  <article>
+                    <label>old password</label>
+                    <input
+                      type="password"
+                      placeholder="**************"
+                      data-attr="old"
+                      value={data.old}
+                      onChange={handleChange}
+                    />
+                  </article>
+                  <article>
+                    <label>new password</label>
+                    <input
+                      type="password"
+                      placeholder="**************"
+                      data-attr="newpassword"
+                      onChange={handleChange}
+                    />
+                  </article>
+                  <article>
+                    <label>new password again</label>
+                    <input
+                      type="password"
+                      placeholder="**************"
+                      data-attr="retypepassword"
+                      value={data.retypepassword}
+                      onChange={handleChange}
+                    />
+                  </article>
 
-        <footer>
-          <article>
-            <span>created</span>
-            <strong>{user?.metadata?.creationTime}</strong>
-          </article>
-          <article>
-            <span>last login</span>
-            <strong>{user?.metadata?.lastSignInTime}</strong>
-          </article>
-        </footer>
-      </div>
-    </MainLayout>
+                  <article>
+                    {!doesPasswordMatch && (
+                      <span className="invalidpassword">Do NOT match!</span>
+                    )}
+                  </article>
+                  <button
+                    disabled={isChangePasswordDisabled}
+                    onClick={changePassword}
+                  >
+                    change password
+                  </button>
+                </section>
+              </Tabs.TabPane>
+            </Tabs>
+          </StickyContainer>
+
+          <footer>
+            <article>
+              <span>created</span>
+              <strong>{user?.metadata?.creationTime}</strong>
+            </article>
+            <article>
+              <span>last login</span>
+              <strong>{user?.metadata?.lastSignInTime}</strong>
+            </article>
+          </footer>
+        </div>
+      </MainLayout>
+    </>
   );
 };
 

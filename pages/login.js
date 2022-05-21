@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useMemo } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -49,53 +50,56 @@ const Login = () => {
   };
 
   return (
-    <section id="login">
-      <form onSubmit={handleSubmit}>
-        <header>welcome back !</header>
-        <p>please enter your details to login</p>
-        <input
-          type="email"
-          placeholder="type your email"
-          value={data.email}
-          autoFocus={true}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, email: evt.target.value }))
-          }
-          disabled={loading}
-        />
-        <input
-          type="password"
-          placeholder="type your password"
-          value={data.password}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, password: evt.target.value }))
-          }
-          disabled={loading}
-        />
+    <>
+      <NextSeo title="Login" />
+      <section id="login">
+        <form onSubmit={handleSubmit}>
+          <header>welcome back !</header>
+          <p>please enter your details to login</p>
+          <input
+            type="email"
+            placeholder="type your email"
+            value={data.email}
+            autoFocus={true}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, email: evt.target.value }))
+            }
+            disabled={loading}
+          />
+          <input
+            type="password"
+            placeholder="type your password"
+            value={data.password}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, password: evt.target.value }))
+            }
+            disabled={loading}
+          />
 
-        <article className="footer">
-          <input type="checkbox" id="remember" />
-          <label htmlFor="rememberme">Remember me</label>
-          <Link href="/forgetpassword">Forget password ?</Link>
-        </article>
+          <article className="footer">
+            <input type="checkbox" id="remember" />
+            <label htmlFor="remember">Remember me</label>
+            <Link href="/forgetpassword">Forget password ?</Link>
+          </article>
 
-        {!loading && (
-          <button
-            type="submit"
-            disabled={data.email.length === 0 && data.password.length === 0}
-          >
-            login
-          </button>
-        )}
-        {error && <article className="err">{loginError}</article>}
-      </form>
-      <footer>
-        <span>Do not have an account ?</span>
-        <strong>
-          <Link href="/register">Signup for free</Link>
-        </strong>
-      </footer>
-    </section>
+          {!loading && (
+            <button
+              type="submit"
+              disabled={data.email.length === 0 && data.password.length === 0}
+            >
+              login
+            </button>
+          )}
+          {error && <article className="err">{loginError}</article>}
+        </form>
+        <footer>
+          <span>Do not have an account ?</span>
+          <strong>
+            <Link href="/register">Signup for free</Link>
+          </strong>
+        </footer>
+      </section>
+    </>
   );
 };
 

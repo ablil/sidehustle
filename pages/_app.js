@@ -6,6 +6,8 @@ import Script from "next/script";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 import { useEffect } from "react";
+import { DefaultSeo } from "next-seo";
+import seo from "../seo";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -20,6 +22,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
   return (
     <>
+      <DefaultSeo {...seo} />
       <Provider store={store}>
         <Component {...pageProps} />
       </Provider>

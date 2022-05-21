@@ -1,4 +1,5 @@
 import { notification, Tabs, Tag } from "antd";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -177,181 +178,184 @@ const Details = () => {
   }
   if (idea) {
     return (
-      <MainLayout>
-        <section id="details">
-          <main>
-            <header id="details-header">
-              <input
-                data-attr="title"
-                value={clone.title}
-                placeholder="Title"
-                onChange={handleAttributeChange}
-                onBlur={handleAttributeBlur}
-              />
-              <input
-                value={keyword}
-                onChange={handleKeywordChange}
-                type="text"
-                placeholder="search"
-                className="searchbar"
-              />
-            </header>
-
-            <section id="details-main">
-              <StickyContainer>
-                <Tabs defaultActiveKey="2" onChange={onTabChange} centered>
-                  <Tabs.TabPane tab="Notes" key="1">
-                    <NoteList keyword={keyword} />
-                  </Tabs.TabPane>
-                  <Tabs.TabPane tab="Backlog" key="2">
-                    <BacklogList keyword={keyword} />
-                  </Tabs.TabPane>
-                </Tabs>
-              </StickyContainer>
-            </section>
-          </main>
-          <aside>
-            <header className="aside-header">
-              <h1>Metadata</h1>
-            </header>
-            <article className="metadata-item">
-              <label className="metadata-label">description</label>
-              <textarea
-                className="metadata-input"
-                data-attr="description"
-                value={clone.description}
-                placeholder="Description"
-                onChange={handleAttributeChange}
-                onBlur={handleAttributeBlur}
-              ></textarea>
-            </article>
-            <article className="metadata-item">
-              <label className="metadata-label">
-                repository <ExternalLink link={clone.repository || "#"} />
-              </label>
-              <input
-                className="metadata-input"
-                data-attr="repository"
-                value={clone.repository}
-                placeholder="Repository"
-                onChange={handleAttributeChange}
-                onBlur={handleAttributeBlur}
-              />
-            </article>
-            <article className="metadata-item">
-              <label className="metadata-label">
-                tech stack
-                {clone.technologies?.length > 0 &&
-                  ` ( ${clone.technologies.length} ) `}
-              </label>
-              <div style={{ marginTop: ".5rem" }}>
-                {clone.technologies.map((technology) => (
-                  <Tag
-                    key={technology.id}
-                    className="tag"
-                    closable
-                    onClose={() => handleRemoveTag(technology.id)}
-                  >
-                    {technology.name}
-                  </Tag>
-                ))}
-                {tagInputVisible && (
-                  <input
-                    id="add-technology-input"
-                    type="text"
-                    placeholder="type here"
-                    value={tag}
-                    onChange={(evt) => setTag(evt.target.value)}
-                    onBlur={handleAddTagBlur}
-                    onKeyDown={handleAddTag}
-                  />
-                )}
-                {!tagInputVisible && (
-                  <button onClick={toggleAddTechnology}>+ add more</button>
-                )}
-              </div>
-            </article>
-
-            <hr style={{ opacity: ".2" }} />
-            <section className="metadata-item">
-              <header className="aside-header">
-                <h1>
-                  Useful links{" "}
-                  {clone.links?.length > 0 && ` ( ${clone.links.length} ) `}
-                </h1>
+      <>
+        <NextSeo noindex={true} />
+        <MainLayout>
+          <section id="details">
+            <main>
+              <header id="details-header">
+                <input
+                  data-attr="title"
+                  value={clone.title}
+                  placeholder="Title"
+                  onChange={handleAttributeChange}
+                  onBlur={handleAttributeBlur}
+                />
+                <input
+                  value={keyword}
+                  onChange={handleKeywordChange}
+                  type="text"
+                  placeholder="search"
+                  className="searchbar"
+                />
               </header>
-              <section id="useful-links">
-                <header>
-                  <button
-                    onClick={() =>
-                      setModals((old) => ({ ...old, links: !old.links }))
-                    }
-                  >
-                    add new link
-                  </button>
-                </header>
-                <hr style={{ opacity: ".1" }} />
 
-                <article>
-                  {clone.links.map((link) => (
-                    <div key={link} className="link">
-                      <ExternalLink link={link} />
-                      <span>{link}</span>
-                      <button
-                        data-link={link}
-                        className="link-close"
-                        onClick={removeLink}
-                      >
-                        <Close />
-                      </button>
-                    </div>
-                  ))}
-                </article>
+              <section id="details-main">
+                <StickyContainer>
+                  <Tabs defaultActiveKey="2" onChange={onTabChange} centered>
+                    <Tabs.TabPane tab="Notes" key="1">
+                      <NoteList keyword={keyword} />
+                    </Tabs.TabPane>
+                    <Tabs.TabPane tab="Backlog" key="2">
+                      <BacklogList keyword={keyword} />
+                    </Tabs.TabPane>
+                  </Tabs>
+                </StickyContainer>
               </section>
-              <CustomModal
-                inputData={[
-                  {
-                    attr: "link",
-                    required: true,
-                  },
-                ]}
-                title="Useful links"
-                visible={modals.links}
-                onCancel={() =>
-                  setModals((old) => ({ ...old, links: !old.links }))
-                }
-                onSubmit={handleSubmitLink}
-              />
-            </section>
+            </main>
+            <aside>
+              <header className="aside-header">
+                <h1>Metadata</h1>
+              </header>
+              <article className="metadata-item">
+                <label className="metadata-label">description</label>
+                <textarea
+                  className="metadata-input"
+                  data-attr="description"
+                  value={clone.description}
+                  placeholder="Description"
+                  onChange={handleAttributeChange}
+                  onBlur={handleAttributeBlur}
+                ></textarea>
+              </article>
+              <article className="metadata-item">
+                <label className="metadata-label">
+                  repository <ExternalLink link={clone.repository || "#"} />
+                </label>
+                <input
+                  className="metadata-input"
+                  data-attr="repository"
+                  value={clone.repository}
+                  placeholder="Repository"
+                  onChange={handleAttributeChange}
+                  onBlur={handleAttributeBlur}
+                />
+              </article>
+              <article className="metadata-item">
+                <label className="metadata-label">
+                  tech stack
+                  {clone.technologies?.length > 0 &&
+                    ` ( ${clone.technologies.length} ) `}
+                </label>
+                <div style={{ marginTop: ".5rem" }}>
+                  {clone.technologies.map((technology) => (
+                    <Tag
+                      key={technology.id}
+                      className="tag"
+                      closable
+                      onClose={() => handleRemoveTag(technology.id)}
+                    >
+                      {technology.name}
+                    </Tag>
+                  ))}
+                  {tagInputVisible && (
+                    <input
+                      id="add-technology-input"
+                      type="text"
+                      placeholder="type here"
+                      value={tag}
+                      onChange={(evt) => setTag(evt.target.value)}
+                      onBlur={handleAddTagBlur}
+                      onKeyDown={handleAddTag}
+                    />
+                  )}
+                  {!tagInputVisible && (
+                    <button onClick={toggleAddTechnology}>+ add more</button>
+                  )}
+                </div>
+              </article>
 
-            <hr style={{ opacity: ".2" }} />
-            <footer>
-              <article>
-                <span>Created: </span>
-                <strong>
-                  {clone.created?.toDate().toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </strong>
-              </article>
-              <article>
-                <span>Last Modified: </span>
-                <strong>
-                  {clone.lastModified?.toDate().toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </strong>
-              </article>
-            </footer>
-          </aside>
-        </section>
-      </MainLayout>
+              <hr style={{ opacity: ".2" }} />
+              <section className="metadata-item">
+                <header className="aside-header">
+                  <h1>
+                    Useful links{" "}
+                    {clone.links?.length > 0 && ` ( ${clone.links.length} ) `}
+                  </h1>
+                </header>
+                <section id="useful-links">
+                  <header>
+                    <button
+                      onClick={() =>
+                        setModals((old) => ({ ...old, links: !old.links }))
+                      }
+                    >
+                      add new link
+                    </button>
+                  </header>
+                  <hr style={{ opacity: ".1" }} />
+
+                  <article>
+                    {clone.links.map((link) => (
+                      <div key={link} className="link">
+                        <ExternalLink link={link} />
+                        <span>{link}</span>
+                        <button
+                          data-link={link}
+                          className="link-close"
+                          onClick={removeLink}
+                        >
+                          <Close />
+                        </button>
+                      </div>
+                    ))}
+                  </article>
+                </section>
+                <CustomModal
+                  inputData={[
+                    {
+                      attr: "link",
+                      required: true,
+                    },
+                  ]}
+                  title="Useful links"
+                  visible={modals.links}
+                  onCancel={() =>
+                    setModals((old) => ({ ...old, links: !old.links }))
+                  }
+                  onSubmit={handleSubmitLink}
+                />
+              </section>
+
+              <hr style={{ opacity: ".2" }} />
+              <footer>
+                <article>
+                  <span>Created: </span>
+                  <strong>
+                    {clone.created?.toDate().toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </strong>
+                </article>
+                <article>
+                  <span>Last Modified: </span>
+                  <strong>
+                    {clone.lastModified?.toDate().toLocaleDateString("en-US", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </strong>
+                </article>
+              </footer>
+            </aside>
+          </section>
+        </MainLayout>
+      </>
     );
   } else {
     return "";

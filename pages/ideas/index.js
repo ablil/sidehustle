@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { NextSeo } from "next-seo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 } from "uuid";
@@ -107,86 +108,89 @@ const Ideas = () => {
     setModalVisibility((old) => !old);
   };
   return (
-    <MainLayout>
-      <section id="ideas">
-        <header>
-          <article className="welcome">
-            Hi {user?.displayName || "there"}, Welcome back ! 👋
-          </article>
-
-          <>
-            <article className="tabs-item-wrapper">
-              <span
-                className={`tabs-item ${
-                  filter === "all" ? "tabs-item-selected" : ""
-                }`}
-                data-filter="all"
-                onClick={handleFilterChange}
-              >
-                All
-              </span>
-              <span
-                className={`tabs-item ${
-                  filter === "active" ? "tabs-item-selected" : ""
-                }`}
-                data-filter="active"
-                onClick={handleFilterChange}
-              >
-                active
-              </span>
-              <span
-                className={`tabs-item ${
-                  filter === "archived" ? "tabs-item-selected" : ""
-                }`}
-                data-filter="archived"
-                onClick={handleFilterChange}
-              >
-                archived
-              </span>
+    <>
+      <NextSeo noindex={true} />
+      <MainLayout>
+        <section id="ideas">
+          <header>
+            <article className="welcome">
+              Hi {user?.displayName || "there"}, Welcome back ! 👋
             </article>
-          </>
-          <button onClick={toggleAddIdea}>
-            <Plus />
-          </button>
-          <input
-            className="searchbar"
-            type="text"
-            value={keyword}
-            onChange={handleKeywordChange}
-            placeholder="Search by name or technologies ..."
-          />
-        </header>
-        <hr style={{ opacity: ".2", margin: "0" }} />
 
-        <section id="ideas-wrapper">
-          {loadingIdeas && <span>loading ...</span>}
-          {!loadingIdeas &&
-            filteredIdeas.map((idea) => (
-              <IdeaSummary key={idea.id} idea={idea} onRemove={onRemove} />
-            ))}
+            <>
+              <article className="tabs-item-wrapper">
+                <span
+                  className={`tabs-item ${
+                    filter === "all" ? "tabs-item-selected" : ""
+                  }`}
+                  data-filter="all"
+                  onClick={handleFilterChange}
+                >
+                  All
+                </span>
+                <span
+                  className={`tabs-item ${
+                    filter === "active" ? "tabs-item-selected" : ""
+                  }`}
+                  data-filter="active"
+                  onClick={handleFilterChange}
+                >
+                  active
+                </span>
+                <span
+                  className={`tabs-item ${
+                    filter === "archived" ? "tabs-item-selected" : ""
+                  }`}
+                  data-filter="archived"
+                  onClick={handleFilterChange}
+                >
+                  archived
+                </span>
+              </article>
+            </>
+            <button onClick={toggleAddIdea}>
+              <Plus />
+            </button>
+            <input
+              className="searchbar"
+              type="text"
+              value={keyword}
+              onChange={handleKeywordChange}
+              placeholder="Search by name or technologies ..."
+            />
+          </header>
+          <hr style={{ opacity: ".2", margin: "0" }} />
+
+          <section id="ideas-wrapper">
+            {loadingIdeas && <span>loading ...</span>}
+            {!loadingIdeas &&
+              filteredIdeas.map((idea) => (
+                <IdeaSummary key={idea.id} idea={idea} onRemove={onRemove} />
+              ))}
+          </section>
         </section>
-      </section>
 
-      <CustomModal
-        title="Create new idea"
-        inputData={[
-          {
-            attr: "title",
-            type: "text",
-            placeholder: "What's your idea title",
-            required: true,
-          },
-          {
-            attr: "description",
-            type: "text",
-            placeholder: "Type a small description",
-          },
-        ]}
-        visible={modalVisibility}
-        onSubmit={onSubmitIdea}
-        onCancel={toggleAddIdea}
-      />
-    </MainLayout>
+        <CustomModal
+          title="Create new idea"
+          inputData={[
+            {
+              attr: "title",
+              type: "text",
+              placeholder: "What's your idea title",
+              required: true,
+            },
+            {
+              attr: "description",
+              type: "text",
+              placeholder: "Type a small description",
+            },
+          ]}
+          visible={modalVisibility}
+          onSubmit={onSubmitIdea}
+          onCancel={toggleAddIdea}
+        />
+      </MainLayout>
+    </>
   );
 };
 

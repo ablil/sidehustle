@@ -3,8 +3,8 @@
 ## Roadmap
 - [x] release beta version (follow semantic versionning)
 - [x] work on landing page
-- [ ] Google analytics
+- [x] Google analytics
 - [x] Improve UI design and animations
-- [ ] Improve SEO
+- [x] Improve SEO
 - [ ] Improve performance
 - [ ] CD (auto deployment wth github action)

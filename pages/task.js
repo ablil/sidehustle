@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { NextSeo } from "next-seo";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { v4 } from "uuid";
@@ -90,40 +91,58 @@ const Task = () => {
 
   if (loadingTodos) return <Loading />;
   return (
-    <MainLayout>
-      <section className="todos-container">
-        <header>
-          <input
-            className="searchbar"
-            type="text"
-            value={keyword}
-            onChange={handleKeywordChange}
-            placeholder="Search here"
-          />
-        </header>
+    <>
+      <NextSeo title="Todos" />
+      <MainLayout>
+        <section className="todos-container">
+          <header>
+            <input
+              className="searchbar"
+              type="text"
+              value={keyword}
+              onChange={handleKeywordChange}
+              placeholder="Search here"
+            />
+          </header>
 
-        <button onClick={toggleAddTask} id="add-todo">
-          <Plus /> <span>add task</span>
-        </button>
+          <button onClick={toggleAddTask} id="add-todo">
+            <Plus /> <span>add task</span>
+          </button>
 
-        <section className="todos-content">
+          <section className="todos-content">
+            <header className="todos-title">
+              Open - {openTodos.length || 0}
+            </header>
+            <article className="todos-section">
+              {newTodo && (
+                <Todo
+                  editable={newTodo}
+                  todo={{ id: "new", content: "", completed: false }}
+                  toggleEdit={toggleEdit}
+                  onSave={saveTodo}
+                />
+              )}
+              {openTodos.map((todo) => (
+                <Todo
+                  editable={editable === todo.id}
+                  todo={todo}
+                  toggleEdit={toggleEdit}
+                  onSave={saveTodo}
+                  onRemove={handleRemoveTodo}
+                  key={todo.id}
+                />
+              ))}
+            </article>
+          </section>
           <header className="todos-title">
-            Open - {openTodos.length || 0}
+            Completed - {completedTodos.length || 0}
           </header>
           <article className="todos-section">
-            {newTodo && (
+            {completedTodos.map((todo) => (
               <Todo
-                editable={newTodo}
-                todo={{ id: "new", content: "", completed: false }}
-                toggleEdit={toggleEdit}
-                onSave={saveTodo}
-              />
-            )}
-            {openTodos.map((todo) => (
-              <Todo
-                editable={editable === todo.id}
+                editable={false}
                 todo={todo}
-                toggleEdit={toggleEdit}
+                toggleEdit={(id) => {}}
                 onSave={saveTodo}
                 onRemove={handleRemoveTodo}
                 key={todo.id}
@@ -131,23 +150,8 @@ const Task = () => {
             ))}
           </article>
         </section>
-        <header className="todos-title">
-          Completed - {completedTodos.length || 0}
-        </header>
-        <article className="todos-section">
-          {completedTodos.map((todo) => (
-            <Todo
-              editable={false}
-              todo={todo}
-              toggleEdit={(id) => {}}
-              onSave={saveTodo}
-              onRemove={handleRemoveTodo}
-              key={todo.id}
-            />
-          ))}
-        </article>
-      </section>
-    </MainLayout>
+      </MainLayout>
+    </>
   );
 };
 

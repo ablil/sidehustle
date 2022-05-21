@@ -6,6 +6,7 @@ import notifier from "../helpers/notifier";
 import gtm from "../lib/gtm";
 import { auth } from "../services/firebaseconfig";
 import service from "../services/firebaseservice";
+import { NextSeo } from "next-seo";
 
 const Contactus = () => {
   const [data, setData] = useState({ email: "", content: "" });
@@ -19,36 +20,39 @@ const Contactus = () => {
     gtm.contact();
   };
   return (
-    <section id="contactus">
-      <header>Contact us</header>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="email"
-          required={true}
-          value={data.email}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, email: evt.target.value }))
-          }
-        />
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          required={true}
-          placeholder="content"
-          value={data.content}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, content: evt.target.value }))
-          }
-        ></textarea>
-        <button disabled={true} type="submit">
-          submit
-        </button>
-      </form>
-      <CustomFooter />
-    </section>
+    <>
+      <NextSeo title="Contact Us" />
+      <section id="contactus">
+        <header>Contact us</header>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="email"
+            required={true}
+            value={data.email}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, email: evt.target.value }))
+            }
+          />
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            required={true}
+            placeholder="content"
+            value={data.content}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, content: evt.target.value }))
+            }
+          ></textarea>
+          <button disabled={true} type="submit">
+            submit
+          </button>
+        </form>
+        <CustomFooter />
+      </section>
+    </>
   );
 };
 

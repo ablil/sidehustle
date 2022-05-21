@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import {
@@ -62,62 +63,65 @@ const Login = () => {
   };
 
   return (
-    <section id="login">
-      <form onSubmit={register}>
-        <header>Sign up for free, now.</header>
-        <p>create an account and do not miss the opportunity</p>
-        <input
-          type="email"
-          placeholder="type your email"
-          value={data.email}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, email: evt.target.value }))
-          }
-        />
-        <input
-          type="email"
-          placeholder="type your email again !"
-          value={data.emailConfirm}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, emailConfirm: evt.target.value }))
-          }
-        />
-        <input
-          type="password"
-          placeholder="type your password"
-          minLength={10}
-          value={data.password}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, password: evt.target.value }))
-          }
-        />
-        <input
-          type="password"
-          placeholder="type your password again !"
-          value={data.passwordConfirm}
-          onChange={(evt) =>
-            setData((old) => ({ ...old, passwordConfirm: evt.target.value }))
-          }
-        />
-        {!loading && (
-          <button
-            type="submit"
-            style={{
-              visibility: isDisabled(data) ? "hidden" : "visible",
-            }}
-            disabled={isDisabled(data)}
-          >
-            register
-          </button>
-        )}
+    <>
+      <NextSeo title="Register" />
+      <section id="login">
+        <form onSubmit={register}>
+          <header>Sign up for free, now.</header>
+          <p>create an account and do not miss the opportunity</p>
+          <input
+            type="email"
+            placeholder="type your email"
+            value={data.email}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, email: evt.target.value }))
+            }
+          />
+          <input
+            type="email"
+            placeholder="type your email again !"
+            value={data.emailConfirm}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, emailConfirm: evt.target.value }))
+            }
+          />
+          <input
+            type="password"
+            placeholder="type your password"
+            minLength={10}
+            value={data.password}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, password: evt.target.value }))
+            }
+          />
+          <input
+            type="password"
+            placeholder="type your password again !"
+            value={data.passwordConfirm}
+            onChange={(evt) =>
+              setData((old) => ({ ...old, passwordConfirm: evt.target.value }))
+            }
+          />
+          {!loading && (
+            <button
+              type="submit"
+              style={{
+                visibility: isDisabled(data) ? "hidden" : "visible",
+              }}
+              disabled={isDisabled(data)}
+            >
+              register
+            </button>
+          )}
 
-        {error && <article className="err">{error.message}</article>}
-      </form>
+          {error && <article className="err">{error.message}</article>}
+        </form>
 
-      <footer>
-        <Link href="/login">already have an account ? </Link>
-      </footer>
-    </section>
+        <footer>
+          <Link href="/login">already have an account ? </Link>
+        </footer>
+      </section>
+    </>
   );
 };
 
