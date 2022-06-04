@@ -183,6 +183,7 @@
   background-color: #343a40;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
 
@@ -202,6 +203,8 @@
   }
 
   .filter {
+    margin-top: .2rem;
+    margin-bottom: .2rem;
     label {
       padding-right: 1rem;
       text-transform: uppercase;
