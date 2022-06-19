@@ -21,7 +21,7 @@ import service from "../../services/firebaseservice";
 
 const Ideas = () => {
   const [modalVisibility, setModalVisibility] = useState(false);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("active");
   const [keyword, setKeyword] = useState("");
   const [user, loading, error] = useAuthState(auth);
 
